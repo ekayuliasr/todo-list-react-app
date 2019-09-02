@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Header from './Header.js';
-import TodoForm from './TodoForm.js';
 import TodoList from './TodoList.js';
 
 class App extends Component {
@@ -10,8 +9,7 @@ class App extends Component {
     return (
 	    <div className="container">
 	    	<Header />
-		  	<TodoList />
-          		
+		  	<TodoList />        		
         </div>
     );
   }

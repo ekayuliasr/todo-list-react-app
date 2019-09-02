@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
 
@@ -31,12 +30,6 @@ export default class TodoList extends React.Component {
         }));
     };
   
-    updateTodoToShow = s => {
-        this.setState({
-            todoToShow: s
-        });
-    };
-
     handleDeleteTodo = id => {
         this.setState(state => ({
             todos: state.todos.filter(todo => todo.id !== id)
@@ -48,6 +41,13 @@ export default class TodoList extends React.Component {
             todos: state.todos.filter(todo => !todo.complete)
         }));
     };
+
+     updateTodoToShow = s => {
+        this.setState({
+            todoToShow: s
+        });
+    };
+
 
     onToggleAllComplete = () => {
         this.setState(state => ({
@@ -75,7 +75,8 @@ export default class TodoList extends React.Component {
                     <TodoForm onSubmit={this.addTodo}/>
                     {
                         this.state.todos.map(todo => (
-                            <TodoItem key={todo.id} todo={todo} />
+                            <TodoItem key={todo.id} toggleComplete={() => this.toggleComplete(todo.id)} 
+                            onDelete={() => this.handleDeleteTodo(todo.id)} todo={todo} />
                         ))
                     }
                     <div>
